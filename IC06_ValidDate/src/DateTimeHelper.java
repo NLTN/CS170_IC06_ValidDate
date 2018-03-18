@@ -13,7 +13,7 @@ public class DateTimeHelper {
 
 	public boolean isValidDate(int month, int day, int year) {
 		// Step 1: Check the day and the month first.
-		// Domains: 
+		// Domains:
 		// 0 < month < 12
 		// 1 < day < 32
 		// 0 < year < infinity
@@ -53,9 +53,31 @@ public class DateTimeHelper {
 	 */
 	public int daysInMonth(int month) {
 		// Variables
-		int[] _daysInMonth = { 31, -1, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		int[] _daysInMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 		// Return the number of days in the month.
 		return _daysInMonth[month - 1];
+	}
+
+	public int dayOfYear(int month, int day) {
+		int result = 0;
+
+		for (int i = 1; i < month; i++) {
+			result += daysInMonth(i);
+		}
+
+		return (result += day);
+	}
+
+	public String season(int month, int day) {
+		if (dayOfYear(month, day) >= 75 && dayOfYear(month, day) <= 166) {
+			return "Spring";
+		} else if (dayOfYear(month, day) >= 167 && dayOfYear(month, day) <= 258) {
+			return "Summer";
+		} else if (dayOfYear(month, day) >= 259 && dayOfYear(month, day) <= 349) {
+			return "Fall";
+		} else {
+			return "Winter";
+		}
 	}
 }
