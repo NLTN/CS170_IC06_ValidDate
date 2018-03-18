@@ -10,18 +10,12 @@ import java.util.Scanner;
 public class ValidDate {
 
 	public static void main(String[] args) {
-		
 		// Variables
 		Scanner consoleScanner = new Scanner(System.in);
 		DateTimeHelper helper = new DateTimeHelper();
 		String inputDate;
 		int month, day, year;
 
-		
-		System.out.println(helper.dayOfYear(9,16));
-		System.out.println(helper.dayOfYear(12,15));
-		
-		System.out.println(helper.season(6, 16));
 		// Get the input from user
 		System.out.println("The input date will have the format mm/dd/yyyy.");
 		inputDate = consoleScanner.nextLine();
